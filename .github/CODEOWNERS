@@ -1,0 +1,10 @@
+# Revisores automáticos por área (PGC 2 e 5.2).
+# @juliasgr é o Desenvolvedor Líder deste projeto.
+#
+# Mudanças em pipelines, scripts de deploy e dependências são de maior risco:
+# o Desenvolvedor Líder é sempre chamado para revisar.
+
+/.github/            @juliasgr
+/scripts/            @juliasgr
+pubspec.yaml         @juliasgr
+pubspec.lock         @juliasgr
