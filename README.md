@@ -1,4 +1,4 @@
-# Gerador de QR Code (Flutter)
+# Gerador de QR Code (Flutter)!
 
 Aplicativo individual desenvolvido em Flutter para a atividade de uso de
 bibliotecas externas do **pub.dev**.
