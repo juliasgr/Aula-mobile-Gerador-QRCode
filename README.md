@@ -57,6 +57,19 @@ qr_gerador_flutter/
 4. Escolha um emulador/dispositivo conectado (Android, iOS, ou até
    `flutter run -d chrome` para testar no navegador).
 
+## Como rodar os testes
+
+```bash
+flutter pub get
+flutter test
+```
+
+Os testes ficam na pasta `test/` e verificam:
+
+- a geração do QR Code com a biblioteca `qr_flutter`;
+- o desenho do QR Code na tela (widget test);
+- a formatação das datas do histórico com `intl`.
+
 ## Checklist dos requisitos da atividade
 
 - [x] Desenvolvido em Flutter
