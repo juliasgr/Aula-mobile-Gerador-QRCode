@@ -1,4 +1,4 @@
-# Gerador de QR Code (Flutter)!
+# Gerador de QR Code (Flutter)
 
 Aplicativo individual desenvolvido em Flutter para a atividade de uso de
 bibliotecas externas do **pub.dev**.
@@ -29,33 +29,68 @@ perceptível" pedida no enunciado. As outras duas (`shared_preferences` e
 ## Estrutura do projeto
 
 ```
-qr_gerador_flutter/
+Aula-mobile-Gerador-QRCode/
 ├── pubspec.yaml                     # dependências (bibliotecas do pub.dev)
-├── lib/
-│   ├── main.dart                    # ponto de entrada e tema do app
-│   ├── models/
-│   │   └── qr_history_item.dart     # modelo de um item do histórico
-│   ├── services/
-│   │   └── history_service.dart     # salvar/ler histórico (shared_preferences)
-│   ├── screens/
-│   │   └── home_screen.dart         # tela principal (campo + QR + histórico)
-│   └── widgets/
-│       └── history_tile.dart        # item visual da lista de histórico
+├── pubspec.lock                     # versões exatas das dependências
+├── README.md
+├── .gitignore
+├── .gitattributes
+├── .env.example
+├── .github/
+│   ├── CODEOWNERS
+│   ├── pull_request_template.md
+│   └── ISSUE_TEMPLATE/              # funcionalidade.yml, defeito.yml
+├── docs/
+│   └── Plano_GCS_DevOps_GQR.pdf     # Plano de Gerenciamento de Configuração
+├── test/                            # testes automatizados
+└── lib/
+    ├── main.dart                    # ponto de entrada e tema do app
+    ├── models/
+    │   └── qr_history_item.dart     # modelo de um item do histórico
+    ├── services/
+    │   └── history_service.dart     # salvar/ler histórico (shared_preferences)
+    ├── screens/
+    │   └── home_screen.dart         # tela principal (campo + QR + histórico)
+    └── widgets/
+        └── history_tile.dart        # item visual da lista de histórico
 ```
+
 
 ## Como executar
 
 1. Instale o [Flutter SDK](https://docs.flutter.dev/get-started/install).
-2. Copie a pasta `qr_gerador_flutter` para sua máquina.
-3. No terminal, dentro da pasta do projeto, rode:
+2. Clonar:
+   git clone https://github.com/juliasgr/Aula-mobile-Gerador-QRCode.git
+   cd Aula-mobile-Gerador-QRCode
+4. No terminal, dentro da pasta do projeto, rode:
 
    ```bash
    flutter pub get
    flutter run
    ```
 
-4. Escolha um emulador/dispositivo conectado (Android, iOS, ou até
+5. Escolha um emulador/dispositivo conectado (Android, iOS, ou até
    `flutter run -d chrome` para testar no navegador).
+
+   ## Como rodar os testes
+
+```bash
+flutter test
+```
+
+Os testes ficam na pasta `test/`.
+
+## Documentação de configuração (GCS)
+
+O plano de gerenciamento de configuração do projeto está em
+[docs/Plano_GCS_DevOps_GQR.pdf](docs/Plano_GCS_DevOps_GQR.pdf).
+
+## Como contribuir
+
+- A branch `main` é protegida: não aceita commits diretos.
+- Toda mudança entra por Pull Request, com 1 aprovação do par de revisão.
+- O merge é sempre **squash**, e o título do PR vira a mensagem do commit
+  (padrão Conventional Commits, ex.: `feat: adiciona exportação do QR Code`).
 
 ## Checklist dos requisitos da atividade
 
