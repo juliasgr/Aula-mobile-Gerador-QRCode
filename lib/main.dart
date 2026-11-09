@@ -5,16 +5,12 @@ void main() {
   runApp(const QrGeradorApp());
 }
 
-/// Widget raiz do aplicativo.
-///
-/// Configura o tema visual (Material 3) e define [HomeScreen]
-/// como tela inicial do app.
 class QrGeradorApp extends StatelessWidget {
   const QrGeradorApp({super.key});
 
-  @override
+   @override
   Widget build(BuildContext context) {
-    final corPrimaria = const Color(0xFF3B5BFD);
+    const corPrimaria = Color(0xFF3B5BFD);
 
     return MaterialApp(
       title: 'Gerador de QR Code',
