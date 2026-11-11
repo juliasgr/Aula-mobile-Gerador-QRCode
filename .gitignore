@@ -25,7 +25,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/coverage/
+/flutter analyzeage/
 
 # Symbolication / obfuscation
 app.*.symbols
