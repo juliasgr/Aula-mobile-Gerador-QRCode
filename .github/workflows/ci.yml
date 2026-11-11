@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  qualidade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Instalar dependências
+        run: flutter pub get
+      - name: Lint
+        run: flutter analyze
+      - name: Testes com cobertura
+        run: flutter test --coverage
+      - name: Quality gate de cobertura (mínimo 60%)
+        run: |
+          if [ ! -s coverage/lcov.info ]; then
+            echo "Sem dados de cobertura (lcov.info vazio)"; exit 1
+          fi
+          LF=$(grep -h '^LF:' coverage/lcov.info | cut -d: -f2 | paste -sd+ | bc)
+          LH=$(grep -h '^LH:' coverage/lcov.info | cut -d: -f2 | paste -sd+ | bc)
+          PCT=$(( LH * 100 / LF ))
+          echo "Cobertura de linhas: ${PCT}% (${LH}/${LF})"
+          if [ "$PCT" -lt 60 ]; then
+            echo "Cobertura abaixo de 60%"; exit 1
+          fi
+      - name: Build
+        run: flutter build web
+
+  dependencias:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: critical
+
+  ci-ok:
+    if: always()
+    needs: [qualidade, dependencias]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar resultado dos jobs
+        run: |
+          if [ "${{ contains(needs.*.result, 'failure') }}" = "true" ] || \
+             [ "${{ contains(needs.*.result, 'cancelled') }}" = "true" ]; then
+            echo "Algum job falhou"; exit 1
+          fi
+          echo "Tudo verde"
