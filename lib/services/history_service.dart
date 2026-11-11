@@ -16,6 +16,7 @@ class HistoryService {
     return dadosSalvos
         .map((item) => QrHistoryItem.fromMap(jsonDecode(item)))
         .toList()
+        .reversed
         .toList();
   }
 
