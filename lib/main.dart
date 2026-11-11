@@ -3,7 +3,6 @@ import 'screens/home_screen.dart';
 
 void main() {
   runApp(const QrGeradorApp());
-    var naoUsada = 1;
 }
 
 class QrGeradorApp extends StatelessWidget {
