@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
+import '../utils/qr_code_validator.dart';
 import '../models/qr_history_item.dart';
 import '../services/history_service.dart';
 import '../widgets/history_tile.dart';
@@ -44,6 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
       _mostrarAviso('Digite um texto ou link antes de gerar o QR Code.');
       return;
     }
+    if (!isValidQrText(texto)) {
+  _mostrarAviso('O texto não pode ultrapassar 500 caracteres.');
+  return;
+}
 
     setState(() => _conteudoQr = texto);
   }
